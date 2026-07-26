@@ -1,7 +1,7 @@
 // End-to-End-Smoke: Onboarding → Test → Ergebnis → Programm → Session → Dashboard
 import { chromium } from 'playwright-core';
 
-const BASE = 'http://localhost:4173';
+const BASE = process.env.BASE_URL ?? 'http://localhost:4173';
 const shots = process.env.SHOT_DIR ?? '/tmp';
 
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium' });

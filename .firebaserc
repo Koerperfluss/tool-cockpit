@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "default": "gen-lang-client-0285074833"
+  },
+  "targets": {
+    "gen-lang-client-0285074833": {
+      "hosting": {
+        "cali-mobility": ["cali-mobility"]
+      }
+    }
+  }
+}
