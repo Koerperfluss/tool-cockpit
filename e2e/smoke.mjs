@@ -4,7 +4,10 @@ import { chromium } from 'playwright-core';
 const BASE = process.env.BASE_URL ?? 'http://localhost:4173';
 const shots = process.env.SHOT_DIR ?? '/tmp';
 
-const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium' });
+const browser = await chromium.launch({
+  executablePath: process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium',
+  ...(process.env.HTTPS_PROXY ? { proxy: { server: process.env.HTTPS_PROXY, bypass: 'localhost,127.0.0.1' } } : {}),
+});
 const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
 page.on('pageerror', (e) => {
   console.error('PAGE ERROR:', e.message);
